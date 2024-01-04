@@ -1,0 +1,229 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family:  "RobotoMedium";
+    box-sizing: border-box;
+}
+body{
+    background: rgb(241,241,241);
+}
+
+body::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 20px;
+}
+
+.menu-top
+{
+    width: 83%;
+    position: fixed;
+    right: 0%;
+    height: 50px;
+    box-shadow: 0px 0px 4px silver;
+    background: white;
+    z-index: 100;
+}
+.menu-lateral
+{
+    width: 17%;
+    height: 100vh;
+    box-shadow: 0px 0px 4px silver;
+    position: fixed;
+    background: white;
+    z-index: 100;
+}
+.image-logo
+{
+    width:70%;
+    display: block;
+    margin: 20px 5px 5px 10px;
+    position: absolute;
+}
+.cont-letter
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgb(0,92,192);
+    color: white;
+    position: absolute;
+    right: 1%;
+    top: 5%;
+    border: 3px solid rgb(0,92,192);
+    transition: border-color 1s;
+    cursor: pointer;
+}
+.app-container
+{
+    position: absolute;
+    width: 220px;
+    height: 200px;
+    background: white;
+    box-shadow: 1px 1px 5px silver;
+    right: 2%;
+    top:40px;
+    display: none;
+}
+
+.item-personal
+{
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid silver;
+}
+.item-personal a{
+    text-decoration: none;
+    font-size: 14px;
+    color: rgb(161, 161, 161);
+    font-weight:normal;
+}
+
+.item-personal:hover
+{
+    transition: all .45s;
+    background: rgb(76, 139, 186);
+    color: white;
+}
+.item-personal:hover a{
+    color: white;
+}
+.letters
+{
+    padding-top: 7px;
+    padding-left: 7px;
+}
+.names
+{
+    position: absolute;
+    font-size: 16px;
+    right: 6%;
+    top: 12px;
+    font-family: "RobotoBlack";
+}
+.wrap
+{
+    width: 78%;
+    transform: translateX(24%);
+    top: 6%;
+    position: absolute;
+    z-index: -1;
+}
+.sub-menu
+{
+    position: absolute;
+    background:white;
+    height: 100vh;
+    top: 0%;
+    transform: translateX(-100%);
+    width: 20%;
+    transition: .35s;
+    z-index: 10;
+    box-shadow: 0px 0px 4px silver;
+}
+.contenedor-menu-items
+{
+    width: 100%;
+    margin-top:40%;
+    position: absolute;
+}
+
+.text-d
+{
+    text-decoration: none;
+    color: rgb(72, 72, 72);
+}
+.item-menu
+{
+    width: 100;
+    display: flex;
+    padding: 10px;
+    font-size: calc(0.4rem + 0.5em);
+    cursor: pointer;
+}
+.item-menu:hover
+{
+    transition: .45s;
+    opacity: 0.6;
+}
+.subtitle
+{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.active
+{
+    width: 100%;
+    background: rgb(242, 242, 242);
+    border-radius: 10px;
+}
+.active a{
+    color: rgb(0, 92, 192);
+}
+.item-menu .pos
+{
+    width: 100%;
+    margin-left: 5%;
+}
+.item-menu .pos2
+{
+    width: 100%;
+    margin-left: 15%;
+}
+
+.close
+{
+    float: right;
+    margin-right: 3%;
+    margin-top: 12%;
+    cursor: pointer;
+    font-size: 14px;
+    transition: .32s;
+}
+.close:hover
+{
+    opacity: 0.6;
+    transition: .32s;
+}
+.title-submenu
+{
+    font-size: 20PX;
+    text-align: center;
+}
+
+.fill
+{
+    display: none;
+}
+.loadalert
+{
+    position: absolute;
+    width: 22%;
+    background:rgb(0, 0, 0);
+    bottom: 1px;
+    padding: 6px;
+    right: 0;
+    box-shadow: 0px 0px 6px black;
+    display: flex;
+    border-radius: 5px;
+}
+.loadalert img{
+    width: 30px;
+    height: 30px;
+}
+.loadalert p{
+    width: 60%;
+    font-size: 13px;
+    margin-top: 2%;
+    margin-left: 5%;
+    color: white;
+}

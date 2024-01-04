@@ -1,0 +1,6 @@
+{
+    "ProjectName":"reportes",
+    "route":"http://localhost",
+    "favicon":"icon.png",
+    "production":false
+}
