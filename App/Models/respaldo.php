@@ -19,7 +19,6 @@ class respaldo extends Model
     public $PI;
     public $Almacenamiento;
     public $Comentarios;
-    public $review;
     public $Firma;
     public $id_User;
     public $Fecha;

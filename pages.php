@@ -26,11 +26,25 @@ $blocks=array(
     ],
     "Equipo"=>[
         "getall",
-        "save"
+        "save",
+        "show",
+        "getmarca",
+        "store",
+        "getallunsigned",
+        "update",
+        "delete"
     ],
     "Backup"=>[
         "show",
-        "getall"
+        "getall",
+        "save",
+        "getrespaldo",
+        "update"
+    ],
+    "Usuario"=>[
+        "show",
+        "getall",
+        "asignar"
     ]
 );
 //Se pueden registrar varios bloques y varias paginas

@@ -5,9 +5,8 @@
     ?>
     <div id="app">
         <?php 
-        Backup_Block::ModalCreate();
-        Backup_Block::ModalOptions();
-        Backup_Block::ModalVisual();
+            Usuario_block::ModalOptions();
+            Usuario_block::PanelRoles();
         ?>
         <div class="loadalert" v-show="alert==true">
             <img src="<?php Icon("load.gif")?>" alt="">
@@ -16,14 +15,14 @@
         <div class="wrap mr-t-6">
             <div class="cont-90 mr-auto">
             <?php 
-                Backup_Block::header();
-                Backup_Block::Table();
+                Usuario_block::panelheader();
+                Usuario_block::Table();
             ?>
             </div>
         </div>
     </div>
     <script>
-        var module = "respaldo";
+        var module = "usuario";
     </script>
     <?php scripts();?>
 </body>

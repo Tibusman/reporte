@@ -125,7 +125,7 @@
                     USUARIOS
                 </p><br><br>
                 <?php
-                    Bloque("Auto/show", "Ver usuarios");
+                    Bloque("Usuario/show", "Ver usuarios");
                 ?>
             </div>
 
@@ -134,7 +134,7 @@
                     EQUIPOS
                 </p><br><br>
                 <?php
-                    Bloque("Reporte/show", "Ver equipos");
+                    Bloque("Equipo/show", "Ver equipos");
                 ?>
             </div>
         </div>

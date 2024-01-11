@@ -5,9 +5,11 @@
     ?>
     <div id="app">
         <?php 
-        Backup_Block::ModalCreate();
-        Backup_Block::ModalOptions();
-        Backup_Block::ModalVisual();
+            Equipo_Block::ModalRegistro();
+            Equipo_Block::ModalOpciones();
+            Equipo_Block::ModalEdicion();
+            Equipo_Block::ModalAsignar();
+            Equipo_Block::ModalQuestion();
         ?>
         <div class="loadalert" v-show="alert==true">
             <img src="<?php Icon("load.gif")?>" alt="">
@@ -16,14 +18,14 @@
         <div class="wrap mr-t-6">
             <div class="cont-90 mr-auto">
             <?php 
-                Backup_Block::header();
-                Backup_Block::Table();
+                Equipo_Block::BloqueInicio();
+                Equipo_Block::Table();
             ?>
             </div>
         </div>
     </div>
     <script>
-        var module = "respaldo";
+        var module = "equipo";
     </script>
     <?php scripts();?>
 </body>
