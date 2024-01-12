@@ -85,7 +85,7 @@ const app = Vue.createApp({
                     if(res.data === true)
                     {
                         this.SuccesAlert("Respaldo creado con éxito");
-                        this.LoadBackup();
+                        this.LoadBackup('-');
                         this.modal = false;
                     }
                     else
@@ -203,7 +203,7 @@ const app = Vue.createApp({
             try
             {
                 let form = new FormData();
-                form.append("Firma", "https://internos.busman.com.mx/reporte/App/public/img/firma_uriel.png");
+                form.append("Firma", "https://internos.busman.com.mx/reportes/App/public/img/firma.png");
                 form.append("id", this.id);
                 form.append("method", "PUT");
                 form.append("token", this.token);

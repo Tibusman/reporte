@@ -87,6 +87,11 @@ class Mantenimiento_Controller extends Views
     {
         return $this->histo_man->SELECT()->WHERE("id_man", "=", $id)->DESC()->GET();
     }
+
+    public function getcont()
+    {
+        return $this->mantenimiento->SELECT()->COUNT("id", "cuenta")->GET();
+    }
 }
 
 ?>

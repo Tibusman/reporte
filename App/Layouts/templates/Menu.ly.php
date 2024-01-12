@@ -53,29 +53,51 @@
                     </a>
                 </div>
 
-                <div id="respaldo" onclick="LoadSubMenu('respaldo')">
-                    <a class="text-d">
-                        <div class="item-menu">
-                            <i class="fa-solid fa-cloud"></i>
-                            <p class="pos">Respaldos</p>
+                <?php
+                    Rols::Check(["Admin", "SuperUser"], function(){
+                        ?>
+                        <div id="respaldo" onclick="LoadSubMenu('respaldo')">
+                            <a class="text-d">
+                                <div class="item-menu">
+                                    <i class="fa-solid fa-cloud"></i>
+                                    <p class="pos">Respaldos</p>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
+                        <?php
+                    });
+                ?>
 
-                <div id="usuario" onclick="LoadSubMenu('usuario')">
-                    <a class="text-d">
-                        <div class="item-menu">
-                            <i class="fa-solid fa-user"></i>
-                            <p class="pos">Usuarios</p>
+                
+
+                <?php
+                    Rols::Check(["SuperUser"], function(){
+                        ?>
+                        <div id="usuario" onclick="LoadSubMenu('usuario')">
+                            <a class="text-d">
+                                <div class="item-menu">
+                                    <i class="fa-solid fa-user"></i>
+                                    <p class="pos">Usuarios</p>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-
-                <div id="equipo" onclick="LoadSubMenu('equipo')">
+                        
+                        <div id="equipo" onclick="LoadSubMenu('equipo')">
+                            <a class="text-d">
+                                <div class="item-menu">
+                                    <i class="fa-solid fa-laptop"></i>
+                                    <p class="pos">Equipos</p>
+                                </div>
+                            </a>
+                        </div>
+                        <?php
+                    })
+                ?>
+                <div id="equipo" onclick="window.location='https://internos.busman.com.mx/requisicion'">
                     <a class="text-d">
                         <div class="item-menu">
-                            <i class="fa-solid fa-laptop"></i>
-                            <p class="pos">Equipos</p>
+                            <i class="fa-solid fa-file"></i>
+                            <p class="pos">Requisición</p>
                         </div>
                     </a>
                 </div>

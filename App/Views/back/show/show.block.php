@@ -6,7 +6,13 @@ class Backup_Block
     {
         ?>
             <div class="cont-100 mr-auto mr-t-4">
-            <button class="button bg-success c-white cont-35 float-end border-rad-1" @click="OpenModal">Nuevo respaldo</button>
+            <?php
+                Rols::Check(["SuperUser"], function(){
+                    ?>
+                        <button class="button bg-success c-white cont-35 float-end border-rad-1" @click="OpenModal">Nuevo respaldo</button>
+                    <?php
+                });
+            ?>
                 <div class="cont-50">
                     <input type="date" class="input-form shad-1-gray" v-model="fechafilter" @change="LoadBackup('')">
                 </div>

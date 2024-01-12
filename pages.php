@@ -14,7 +14,8 @@ $blocks=array(
         "delete",
         "loadreportedetail",
         "postsolution",
-        "update"
+        "update",
+        "getcont"
     ],
     "Mantenimiento"=>[
         "show",
@@ -22,7 +23,8 @@ $blocks=array(
         "save",
         "savemante",
         "update",
-        "gethistorial"
+        "gethistorial",
+        "getcont"
     ],
     "Equipo"=>[
         "getall",
@@ -39,7 +41,8 @@ $blocks=array(
         "getall",
         "save",
         "getrespaldo",
-        "update"
+        "update",
+        "getcont"
     ],
     "Usuario"=>[
         "show",

@@ -88,4 +88,9 @@ class Reporte_Controller extends Views
         $this->rep_his->Fecha_reg = Timer::GetDate("MX", "Y-m-d h:i:s A");
         return $this->rep_his->POST(true);
     }
+
+    public function getcont()
+    {
+        return $this->reporte->SELECT()->COUNT("id", "cuenta")->GET();
+    }
 }
