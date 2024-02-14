@@ -1,8 +1,17 @@
 .input-form{
-    width: 70%;
-    display: block;
-    background: white;
+    width: 60%;
+    background-color: white;
+    border-radius: 2px;
+    border: none;
+    padding: 8px;
+    outline: none;
     box-shadow: 0px 0px 4px silver;
+}
+
+.input-form-1{
+    width: 97%;
+    display: block;
+    background: rgb(241,241,241);
     border: none;
     padding: 5px;
     outline: none;
@@ -34,11 +43,13 @@
     cursor: pointer;
 }
 
-.input-form-1{
-    width: 97%;
-    display: block;
-    background: rgb(241,241,241);
-    border: none;
-    padding: 5px;
-    outline: none;
+.format-card{
+    width: 30%;
+    padding: 10px;
+    font-size: 12px;
+    margin: auto;
+    background: rgb(0,92,192);
+    color: white;
+    text-align: center;
+    cursor: pointer;
 }

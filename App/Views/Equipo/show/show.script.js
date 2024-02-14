@@ -23,12 +23,20 @@ const app = Vue.createApp({
             options:false,
             token:"",
             users:[],
+            user:[],
             question:false,
+            question2:false,
+            equipo:[],
+            archivo:false,
             index:"",
+            numero_emp:"",nombre_emp:"",puesto:"",correo:"",area:"",tipo_pc:"",no_serie:"",
+            compresor:"",ofice:"",navegador:"",antivirus:"",lector_pdf:"",nx:"",master:"",
+            tulip:"",
         }
     },
     methods: {
-        async Loadequipos(type="+")
+
+        async Loadequipos(type="")
         {
             if(this.page1 === "")
             {
@@ -69,7 +77,7 @@ const app = Vue.createApp({
             }
         },
 
-        async Loadunsigned(type="+")
+        async Loadunsigned(type="")
         {
             if(this.page1 === "")
             {
@@ -91,7 +99,7 @@ const app = Vue.createApp({
             form.append("search", this.search);
             try{
                 const res = await axios.post("getallunsigned/" + this.page1, form);
-                
+                console.log(res.data);
                 if(res.data.length != 0 )
                 {
                     this.equipos = res.data;
@@ -111,7 +119,7 @@ const app = Vue.createApp({
             }
         },
 
-        async Loadusuarios(type="+")
+        async Loadusuarios(type="")
         {
             if(this.page === "")
             {
@@ -133,7 +141,7 @@ const app = Vue.createApp({
             {
                 let form = new FormData();
                 form.append("nombre", this.search2)
-                const res = await axios.post("http://localhost/requisicion/Usuario/getall/" + this.page, form);
+                const res = await axios.post("https://internos.busman.com.mx/requisicion/Usuario/getall/" + this.page, form);
                 if(res.data.length != 0 )
                 {
                     this.users = res.data;
@@ -185,7 +193,7 @@ const app = Vue.createApp({
                 {
                     setTimeout(() => {
                         this.SuccesAlert("Equipo creado con éxito");
-                        this.Loadequipos("-");
+                        this.Loadequipos();
                         this.modal = false;
                         this.alert = false;
                     }, 1000);
@@ -224,7 +232,7 @@ const app = Vue.createApp({
                 {
                     setTimeout(() => {
                         this.SuccesAlert("Equipo actualizado con éxito");
-                        this.Loadequipos("-");
+                        this.Loadequipos();
                         this.modal3 = false;
                         this.alert = false;
                     }, 1000);
@@ -242,8 +250,10 @@ const app = Vue.createApp({
             }
         },
 
-        async Asignar(id)
+        async Asignar(id, user)
         {
+            this.user = user;
+            this.equipo = this.equipos[this.index];
             this.alert = true;
             this.textalert = "Asignando el equipo";
             let form = new FormData();
@@ -258,8 +268,9 @@ const app = Vue.createApp({
                     setTimeout(() => {
                         this.alert = false;
                         this.SuccesAlert("Equipo asignado con éxito");
-                        this.Loadequipos('-');
+                        this.Loadequipos();
                         this.modal2 = false;
+                        this.question2 = true;
                     }, 1000);
                 }
                 else
@@ -292,7 +303,8 @@ const app = Vue.createApp({
                         this.SuccesAlert("Equipo eliminado con éxito");
                         this.question = false;
                         this.options = false;
-                        this.Loadequipos('-');
+                        this.Loadequipos();
+                        this.LoadDocuemntInfo();
                     }, 1000);
                 }
                 else
@@ -345,6 +357,88 @@ const app = Vue.createApp({
             this.marca = this.equipos[this.index].id_marca;
         },
 
+        LoadDocuemntInfo()
+        {
+            this.numero_emp = this.user.numero;
+            this.nombre_emp = `${this.user.Nombre}  ${this.user.Apellidos}`;
+            this.correo = this.user.Correo;
+            this.area = this.user.Area;
+            this.nombre_equipo = this.equipo.nombre;
+            this.modelo = this.equipo.modelo;
+            this.marca = "DELL";
+            this.sistema = this.equipo.sistema;
+            this.puesto = this.user.puesto;
+            this.memoria = this.equipo.memoria;
+            this.procesador = this.equipo.procesador;
+            this.espacio = this.equipo.almacenamiento;
+        },
+
+        GenDocument()
+        {
+            this.LoadDocuemntInfo();
+            this.archivo = true;
+            this.question2 = false;
+        },
+
+        async SaveDocument()
+        {
+            this.alert = true;
+            this.textalert = "Creando documento";
+            let form =  new FormData();
+            form.append("No_Empleado", this.numero_emp);
+            form.append("Nombre", this.nombre_emp);
+            form.append("Puesto", this.puesto);
+            form.append("Correo", this.correo);
+            form.append("Area", this.area);
+            form.append("Tipo", this.tipo_pc);
+            form.append("Nombre_E", this.nombre_equipo);
+            form.append("Marca", this.marca);
+            form.append("Modelo", this.modelo);
+            form.append("No_Serie", this.no_serie);
+            form.append("Procesador", this.procesador);
+            form.append("Memoria", this.memoria);
+            form.append("Disco", this.espacio);
+            form.append("Mouse", "Si");
+            form.append("Teclado", "No");
+            form.append("Monitor", "No");
+            form.append("Cargador", "Si");
+            form.append("Celular", "No");
+            form.append("USB", "No");
+            form.append("Sistema", this.sistema);
+            form.append("Ofice", this.ofice);
+            form.append("Compresor", this.compresor);
+            form.append("Navegador", this.navegador);
+            form.append("Antivirus", this.antivirus);
+            form.append("Lector_pdf", this.lector_pdf);
+            form.append("Nx", this.nx);
+            form.append("Master", this.master);
+            form.append("Tulip", this.tulip);
+            form.append("Firma", "");
+            form.append("tipo_doc", "entrega");
+            form.append("token", this.token);
+            form.append("method", "POST");
+            try{
+                const res = await axios.post("../Archivo/save", form);
+                setTimeout(() => {
+                    this.archivo = false;
+                    this.SuccesAlert("Archivo generado con éxito");
+                    this.alert = false;
+                    this.OpenDocument(res.data.id);
+                }, 1000);
+            }
+            catch(err)
+            {
+                this.ErrorAlert(err);
+                this.alert = false;
+            }
+        },
+
+        OpenDocument(id)
+        {
+            let configuracion_ventana = 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=1,width=700,height=650,left = 390,top = 50';
+            opn = window.open("https://internos.busman.com.mx/reportes/pdf.php?formato=entrega&&id=" + id, "Orden de requisición", configuracion_ventana);
+        },
+
         ErrorAlert(mensaje)
         {
             $(function(){
@@ -373,7 +467,7 @@ const app = Vue.createApp({
     },
     mounted() {
         this.token = document.getElementById("token").value;
-        this.Loadequipos("-");
+        this.Loadequipos();
         this.getmarca();
         this.Loadusuarios();
         window.addEventListener("keyup", (e)=>{
@@ -384,6 +478,7 @@ const app = Vue.createApp({
                 this.modal2 = false;
                 this.modal3 = false;
                 this.question = false;
+                this.archivo = false;
             }
         })
     },

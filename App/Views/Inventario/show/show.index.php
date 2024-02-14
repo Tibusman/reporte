@@ -5,13 +5,9 @@
     ?>
     <div id="app">
         <?php 
-            Equipo_Block::Question();
-            Equipo_Block::ModalRegistro();
-            Equipo_Block::ModalOpciones();
-            Equipo_Block::ModalEdicion();
-            Equipo_Block::ModalAsignar();
-            Equipo_Block::Formato();
-            Equipo_Block::ModalQuestion();
+            Inventario_Block::ModalOptions();
+            Inventario_Block::Modal_inventario();
+            Inventario_Block::Question();
         ?>
         <div class="loadalert" v-show="alert==true">
             <img src="<?php Icon("load.gif")?>" alt="">
@@ -20,14 +16,14 @@
         <div class="wrap mr-t-6">
             <div class="cont-90 mr-auto">
             <?php 
-                Equipo_Block::BloqueInicio();
-                Equipo_Block::Table();
+                Inventario_Block::Bloque1();
+                Inventario_Block::InvenatrioCards();
             ?>
             </div>
         </div>
     </div>
     <script>
-        var module = "equipo";
+        var module = "inventario";
     </script>
     <?php scripts();?>
 </body>

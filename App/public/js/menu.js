@@ -7,6 +7,7 @@ var mantenimiento = document.getElementById("mantenimiento");
 var respaldo = document.getElementById("respaldo");
 var usuario = document.getElementById("usuario");
 var equipo = document.getElementById("equipo");
+var inventario = document.getElementById("inventario");
 var fill = document.getElementsByClassName("fill");
 var modal = document.getElementsByClassName("modal");
 
@@ -61,8 +62,13 @@ function isactive()
     {
         equipo.classList.add("active");
     }
+    if(module === "inventario")
+    {
+        inventario.classList.add("active");
+    }
 
 }
+
 name1.addEventListener("click", ()=>{
     if(menu1.style.display==="block")
     {
@@ -83,6 +89,7 @@ function LoadSubMenu(area)
     fill[2].style.display="none";
     fill[3].style.display="none";
     fill[4].style.display="none";
+    fill[5].style.display="none";
     if(area === "reporte")
     {
         fill[0].style.display="block";
@@ -102,6 +109,10 @@ function LoadSubMenu(area)
     if(area === "equipo")
     {
         fill[4].style.display="block";
+    }
+    if(area === "inventario")
+    {
+        fill[5].style.display="block";
     }
 }
 

@@ -90,6 +90,15 @@
                                 </div>
                             </a>
                         </div>
+
+                        <div id="inventario" onclick="LoadSubMenu('inventario')">
+                            <a class="text-d">
+                                <div class="item-menu">
+                                    <i class="fa-solid fa-list"></i>
+                                    <p class="pos">Inventario</p>
+                                </div>
+                            </a>
+                        </div>
                         <?php
                     })
                 ?>
@@ -157,6 +166,16 @@
                 </p><br><br>
                 <?php
                     Bloque("Equipo/show", "Ver equipos");
+                ?>
+            </div>
+
+            <div class="fill">
+                <p class="title-submenu">
+                    INVENTARIO
+                </p><br><br>
+                <?php
+                    Bloque("Inventario/show", "Ver Inventario");
+                    Bloque("Archivo/show", "Ver documentos");
                 ?>
             </div>
         </div>

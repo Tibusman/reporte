@@ -9,7 +9,7 @@ class Equipo_Block
                 <div class="cont-100 d-flex-f mr-t-6">
                     <div class="cont-50 mr-auto d-flex-f">
                         <input type="search" class="input-form cont-80" v-model="search" placeholder="Buscar usuario" @keyup="Loadequipos('-')">
-                        <img src="<?php Icon('eye.png')?>" alt="" class="mr-l-4 cursor-pointer hov-1" title="Ver no asignados" @click="Loadunsigned('-')">
+                        <img src="<?php Icon('eye.png')?>" alt="" class="mr-l-4 cursor-pointer hov-1" title="Ver no asignados" @click="Loadunsigned('')">
                     </div>
                     <div class="cont-50 mr-auto">
                         <button class="button bg-success c-white float-end cont-50 border-rad-1" @click="openModal()">Registrar equipo</button>
@@ -231,7 +231,7 @@ class Equipo_Block
                                     <p class="text-12 text-center">{{item.Correo}}</p>
                                 </div>
                                 <div class="cont-25 mr-auto">
-                                    <button class="button bg-blue c-white cont-80 border-rad-1" @click="Asignar(item.id)">Asignar</button>
+                                    <button class="button bg-blue c-white cont-80 border-rad-1" @click="Asignar(item.id, item)">Asignar</button>
                                 </div>
                             </div>
                         </div>
@@ -240,6 +240,150 @@ class Equipo_Block
                             <button class="button-list2 hov-1" title="siguiente" @click="Loadusuarios('+')">></button>
                         </div>
                         <br><br><br>
+                    </div>
+                </div>
+            </div>
+        <?php
+    }
+
+    public static function Question()
+    {
+        ?>
+            <div class="modal" v-show=" question2 === true">
+                <div class=" modal-window-md bg-white cont-30 pad-2 border-rad-1 text-14 text-center">
+                    <p class="pad-2">¿Quieres generar el formato?</p>
+                    <div class="cont-100 d-flex-f mr-t-4">
+                        <button class="button bg-primary c-white mr-auto" @click="GenDocument">Generar</button>
+                        <button class="button bg-gray-100 mr-auto" @click="question2=false">Cancelar</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        <?php
+    }
+
+    public static function Formato()
+    {
+        ?>
+            <div class="modal" v-show="archivo === true">
+                <div class=" modal-window-md bg-white pad-2 border-rad-1 h-70 scroll-y"><br>
+                    <p class="text-14 text-center">Formato de equipos</p><br>
+                    <div class="cont-95 mr-auto">
+                        <p class="text-12 c-gray">Datos de usuario</p><hr><br>
+                        <div class="cont-100 d-flex-f">
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Numero de empleado</p>
+                                <input type="text" v-model="numero_emp" class="input-form-1" placeholder="Numero">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Nombre de empleado</p>
+                                <input type="text" v-model="nombre_emp" class="input-form-1" placeholder="Nombre">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Puesto de empleado</p>
+                                <input type="text" v-model="puesto" class="input-form-1" placeholder="Puesto">
+                            </div>
+                        </div>
+                        <div class="cont-100 d-flex-f mr-t-6">
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Correo de empleado</p>
+                                <input type="mail" v-model="correo" class="input-form-1" placeholder="Correo">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Area Perteneciente</p>
+                                <input type="text" v-model="area" class="input-form-1" placeholder="Area">
+                            </div>
+                            <div class="cont-30 mr-auto"></div>
+                        </div><br><br>
+
+
+                        <p class="text-12 c-gray">Datos del equipo</p><hr><br>
+                        <div class="cont-100 d-flex-f">
+                            <div class="cont-45 mr-auto">
+                                <p class="text-10 c-blue">Tipo </p>
+                                <select class="input-form-1" v-model="tipo_pc">
+                                    <option value="laptop">Laptop</option>
+                                    <option value="escritorio">Escritorio</option>
+                                </select>
+                            </div>
+                            <div class="cont-45 mr-auto">
+                                <p class="text-10 c-blue">Nombre de equipo</p>
+                                <input v-model="nombre_equipo" type="text" class="input-form-1" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="cont-100 d-flex-f mr-t-6">
+                            <div class="cont-45 mr-auto">
+                                <p class="text-10 c-blue">Marca </p>
+                                <input type="text" v-model="marca" class="input-form-1" placeholder="Marca">
+                            </div>
+                            <div class="cont-45 mr-auto">
+                                <p class="text-10 c-blue">Modelo</p>
+                                <input type="text" v-model="modelo" class="input-form-1" placeholder="Modelo">
+                            </div>
+                        </div>
+                        <div class="cont-100 d-flex-f mr-t-6">
+                            <div class="cont-95 mr-auto">
+                                <p class="text-10 c-blue">No.Serie</p>
+                                <input type="text" v-model="no_serie" class="input-form-1" placeholder="No.Serie">
+                            </div>
+                        </div><br><br>
+
+
+                        <p class="text-12 c-gray">Software</p><hr><br>
+                        <div class="cont-100 d-flex-f">
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Sistema Operativo</p>
+                                <input type="text" v-model="sistema" class="input-form-1" placeholder="Sistema Operativo">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Ofimática</p>
+                                <input type="text" v-model="ofice" class="input-form-1" placeholder="Ofimática">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Compresor</p>
+                                <input type="text" v-model="compresor" class="input-form-1" placeholder="Compresor">
+                            </div>
+                        </div>
+                        <div class="cont-100 d-flex-f mr-t-6">
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Navegador</p>
+                                <input type="text" v-model="navegador" class="input-form-1" placeholder="Navegador">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Antivirus</p>
+                                <input type="text" v-model="antivirus" class="input-form-1" placeholder="Antivirus">
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Lector PDF</p>
+                                <input type="text" v-model="lector_pdf" class="input-form-1" placeholder="Lector PDF">
+                            </div>
+                        </div>
+                        <div class="cont-100 d-flex-f mr-t-6">
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Siemens NX</p>
+                                <select class="input-form-1" v-model="nx">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Mastercam</p>
+                                <select class="input-form-1" v-model="master">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                            <div class="cont-30 mr-auto">
+                                <p class="text-10 c-blue">Tulip</p>
+                                <select class="input-form-1" v-model="tulip">
+                                    <option value="Si">Si</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <button class="button bg-blue c-white d-block mr-auto cont-50 border-rad-1" @click="SaveDocument">Generar</button><br>
                     </div>
                 </div>
             </div>

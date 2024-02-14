@@ -34,7 +34,8 @@ $blocks=array(
         "store",
         "getallunsigned",
         "update",
-        "delete"
+        "delete",
+        "getbyuser"
     ],
     "Backup"=>[
         "show",
@@ -48,6 +49,25 @@ $blocks=array(
         "show",
         "getall",
         "asignar"
+    ],
+    "Inventario" => [
+        "show",
+        "getall",
+        "store",
+        "destroy",
+        "update",
+        "watch",
+        "getinventario",
+        "additeminventario",
+        "edititeminventario",
+        "destroyitem"
+    ],
+    "Archivo"=>[
+        "save",
+        "update",
+        "show",
+        "getall",
+        "delete",
     ]
 );
 //Se pueden registrar varios bloques y varias paginas

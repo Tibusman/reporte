@@ -5,13 +5,10 @@
     ?>
     <div id="app">
         <?php 
-            Equipo_Block::Question();
-            Equipo_Block::ModalRegistro();
-            Equipo_Block::ModalOpciones();
-            Equipo_Block::ModalEdicion();
-            Equipo_Block::ModalAsignar();
-            Equipo_Block::Formato();
-            Equipo_Block::ModalQuestion();
+            Watch_Block::ModalAdd();
+            Watch_Block::Question();
+            Watch_Block::ModalOptions();
+            Watch_Block::ModalAsign();
         ?>
         <div class="loadalert" v-show="alert==true">
             <img src="<?php Icon("load.gif")?>" alt="">
@@ -20,14 +17,13 @@
         <div class="wrap mr-t-6">
             <div class="cont-90 mr-auto">
             <?php 
-                Equipo_Block::BloqueInicio();
-                Equipo_Block::Table();
+                Watch_Block::table($params);
             ?>
             </div>
         </div>
     </div>
     <script>
-        var module = "equipo";
+        var module = "inventario";
     </script>
     <?php scripts();?>
 </body>

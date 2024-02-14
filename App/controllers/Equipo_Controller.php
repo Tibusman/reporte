@@ -34,6 +34,7 @@ class Equipo_Controller extends Views
         else
         {
             $user = $this->usuario->SELECT()->WHERE("mail", "LIKE", "%$search%")->GET();
+            
             if(count($user) !== 0)
             {
                 $id = $user[0]['id'];
@@ -87,5 +88,11 @@ class Equipo_Controller extends Views
     public function delete()
     {
         $this->equipos->DELETE();
+    }
+
+    public function getbyuser($id)
+    {
+        return $this->equipos->SELECT("equ.*, m.nombre as nombre_marca, m.id as id_marca")->INNER_JOIN("marca m", "equ.id_marca", "=", "m.id")
+            ->WHERE("equ.Id_Us", "=", $id)->GET();
     }
 }

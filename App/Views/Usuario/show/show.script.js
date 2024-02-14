@@ -37,7 +37,7 @@ const app = Vue.createApp({
             {
                 let form = new FormData();
                 form.append("nombre", this.search)
-                const res = await axios.post("http://localhost/requisicion/Usuario/getall/"+this.page1, form);
+                const res = await axios.post("https://internos.busman.com.mx/requisicion/Usuario/getall/"+this.page1, form);
                 if(res.data.length != 0 )
                 {
                     this.users = res.data;
