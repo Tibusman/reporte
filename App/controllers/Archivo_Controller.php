@@ -2,6 +2,7 @@
 
 import("Timer");
 importModel("archivos");
+import_helper("mail");
 
 class Archivo_Controller extends Views
 {
@@ -36,6 +37,17 @@ class Archivo_Controller extends Views
         
     }
 
+    public function sendsolicitud()
+    {
+        $type = $this->archivo->extractsend("tipo");
+        $id = $this->archivo->extractsend("id");
+        $mail = $this->archivo->extractsend("correo");
+        Mail::SendMail("Firmar", 
+            "Firma de documento", "Por favor firma el documento de $type digitalmente, da clic al botón de abajo y te redireccionara a visualizar y firmar tu documento",
+            "https://localhost/reportes/document.php?doctype_Xs4588ss_id_file=$id", $mail);
+        echo "true";
+    }
+
     public function update()
     {
         echo $this->archivo->PUT();
@@ -44,5 +56,26 @@ class Archivo_Controller extends Views
     public function delete()
     {
         return $this->archivo->DELETE();
+    }
+
+    public function firma($id)
+    {
+        $this->View("Firma", "Firmar archivo", $id);
+    }
+
+    public function getfile($id)
+    {
+        return $this->archivo->FIND($id);
+    }
+
+    public function firmar()
+    {
+        $firmaBase64 = $this->archivo->extractsend("firma");
+        $firmaBinaria = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $firmaBase64));
+        $nombreArchivo = 'firma_' . time() . '.png';
+        $rutaArchivo = 'App/Resources/Firmas/' . $nombreArchivo;
+        file_put_contents($rutaArchivo, $firmaBinaria);
+        $this->archivo->Firma = $rutaArchivo;
+        echo $this->archivo->PUT();
     }
 }

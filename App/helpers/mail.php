@@ -4,7 +4,7 @@ import("HTMLMAIL");
 
 class Mail{
     
-    public static function SendMail($name,$title, $message, $url,  $mailto)
+    public static function SendMail($button_name,$title, $message, $url,  $mailto)
     {
         $renderhtml = HTMLMAIL::AddBlock(function(){
     
@@ -26,14 +26,14 @@ class Mail{
         
         }, 'background:rgb(0,92,192);');
         
-        $renderhtml.= HTMLMAIL::AddBlock(function() use ($name, $title, $message, $url){
+        $renderhtml.= HTMLMAIL::AddBlock(function() use ($button_name, $title, $message, $url){
             
-            $html = HTMLMAIL::Column(function() use ($name, $title, $message, $url){
-                return HTMLMAIL::AddRow(function() use ($name, $title, $message, $url){
+            $html = HTMLMAIL::Column(function() use ($button_name, $title, $message, $url){
+                return HTMLMAIL::AddRow(function() use ($button_name, $title, $message, $url){
         
                     $mail =  HTMLMAIL::AddTitle($title, 'text-align:center; font-size:14px;');
                     $mail.= HTMLMAIL::AddParagraph($message, 'text-align:center; font-size:14px;');
-                    $mail.=HTMLMAIL::AddButton($name, $url, "Background:rgb(0,92,192); color:white; text-align:center; font-size:12px; border-radius:5px;");
+                    $mail.=HTMLMAIL::AddButton($button_name, $url, "Background:rgb(0,92,192); color:white; text-align:center; font-size:12px; border-radius:5px;");
         
                     return $mail;
         

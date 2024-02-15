@@ -68,7 +68,12 @@ $blocks=array(
         "show",
         "getall",
         "delete",
-    ]
+        "sendsolicitud",
+        "firma",
+        "getfile",
+        "firmar",
+    ],
+    
 );
 //Se pueden registrar varios bloques y varias paginas
 ?>

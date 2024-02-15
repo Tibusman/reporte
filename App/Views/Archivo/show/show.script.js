@@ -30,6 +30,7 @@ const app = Vue.createApp({
             tipo_formato: "",
             tipo_document: "", edit: false,
             indice: "", formato2: false, form_type: "",
+            firma:"",
         }
     },
     methods: {
@@ -64,7 +65,8 @@ const app = Vue.createApp({
             }
         },
 
-        OpenOpciones(id, tipo, index) {
+        OpenOpciones(id, tipo, index, firma) {
+            this.firma = 
             this.indice = index;
             this.tipo_document = tipo;
             this.id = id;
@@ -551,6 +553,36 @@ const app = Vue.createApp({
             this.form_type = 1;
             this.formato = true;
             this.modalformat = false;
+        },
+        async SendFirma()
+        {
+            this.alert = true;
+            this.textalert ="Enviando Solicitud";
+            let form = new FormData();
+            form.append("id", this.id);
+            form.append("tipo", this.tipo_document);
+            form.append("correo", this.archivos[this.indice].Correo)
+            try{
+                const res = await axios.post("sendsolicitud", form);
+                if(res.data === true)
+                {
+                    setTimeout(() => {
+                        this.opciones = false;
+                        this.SuccesAlert("Se ha enviado la petición con éxito");
+                        this.alert = false;
+                    }, 1000);
+                }
+                else
+                {
+                    this.alert = false;
+                    this.ErrorAlert(res.data);
+                }
+            }
+            catch(err)
+            {
+                this.alert = false;
+                this.ErrorAlert(err);
+            }
         },
 
         ErrorAlert(mensaje) {

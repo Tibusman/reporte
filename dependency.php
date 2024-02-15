@@ -2,6 +2,7 @@
 include_dep("vue3.js");
 include_dep("axios.js");
 include_dep("jquery.min.js");
+include_dep("pad.js");
 include_dep("font-awesome.css");
 include_dep("all.min.js");
 ext_js('<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>');

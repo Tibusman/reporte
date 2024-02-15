@@ -1,5 +1,6 @@
 <?php
 
+
 class Archivo_Block
 {
     public static function Bloque1()
@@ -34,7 +35,7 @@ class Archivo_Block
                     <div class="cont-20 mr-auto">{{item.Puesto}}</div>
                     <div class="cont-20 mr-auto">{{item.Fecha}}</div>
                     <div class="cont-15 mr-auto">{{item.tipo_doc}}</div>
-                    <div class="cont-5 mr-auto"><img src="<?php Icon('option.png'); ?>" class="hov-1 cursor-pointer" @click="OpenOpciones(item.id, item.tipo_doc, index)"></div>
+                    <div class="cont-5 mr-auto"><img src="<?php Icon('option.png'); ?>" class="hov-1 cursor-pointer" @click="OpenOpciones(item.id, item.tipo_doc, index, item.firma)"></div>
                 </div>
             </div>
         <?php
@@ -267,6 +268,9 @@ class Archivo_Block
                     </div>
                     <div class="cont-95 mr-t-2 mr-auto bg-gray-100 border-rad-1 cursor-pointer hov-1 pad-2" @click="OpenDocument">
                         <p class="text-12 text-center" >Imprimir</p>
+                    </div>
+                    <div class="cont-95 mr-t-2 mr-auto bg-gray-100 border-rad-1 cursor-pointer hov-1 pad-2" @click="SendFirma" v-if="firma !== ''">
+                        <p class="text-12 text-center" >Petición de Firma</p>
                     </div>
                     <br>
                 </div>

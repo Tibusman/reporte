@@ -1,0 +1,178 @@
+.button_firma{
+    width: 20%;
+    height: 50px;
+    position: absolute;
+    margin-top: -3%;
+    margin-left: 1%;
+    border-radius: 10px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+.canvas_firma
+{
+    display:inline-block;
+    background: white;
+}
+.button_firma:hover
+{
+    transition: all .35s;
+    border: 1px solid rgb(86, 178, 244);
+    
+    background: rgba(167, 209, 254, 0.6);
+}
+.firma_container
+{
+    text-align: center;
+    width:800px;
+    height:400px;
+}
+.footer-options
+{
+    width:800px;
+    margin: auto;
+    padding: 10px;
+    background: rgb(167, 167, 167);
+}
+
+.header-options
+{
+    margin-top:2rem;
+    width:800px;
+    margin: auto;
+    padding: 15px;
+    background: rgb(9, 9, 111);
+}
+
+.button_success
+{
+    float: right;
+    margin-right: 12px;
+    background: transparent;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border:none;
+    cursor: pointer;
+}
+.btn_blue
+{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    background: rgb(0,92,192);
+    border: none;
+    cursor: pointer;
+}
+
+.btn_black
+{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    background: black;
+    border: none;
+    cursor: pointer;
+}
+
+.firma_image
+{
+    width: 20%;
+    height: 80px;
+    position: absolute;
+    margin-top: -5%;
+    margin-left: 1.8%;
+}
+.button_back{
+    background: transparent;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border:none;
+    cursor: pointer;
+}
+.sheet{
+    width: 60%;
+}
+
+@media(max-width:1024px)
+{
+    .sheet{
+        width: 80%;
+    }
+    .button_firma
+    {
+        margin-left: 21%;
+        margin-top: -6%;
+    }
+    .header-options{
+        margin-top: 0%;
+    }
+    .firma_image
+    {
+        width: 50%;
+        height: 80px;
+        margin-top: -10%;
+        margin-left: 5%;
+    }
+}
+@media(max-width:800px)
+{
+    .firma_container
+    {
+        text-align: left;
+    }
+    .header-options
+    {
+        width: 100%;
+    }
+    .footer-options
+    {
+        width: 100%;
+    }
+    .firma_image
+    {
+        width: 40%;
+        margin-top: -8%;
+        margin-left: 10%;
+    }
+}
+
+@media(max-width:656px)
+{
+    .sheet{
+        width: 90%;
+    }
+    .button_firma
+    {
+        width: 40%;
+        margin-left: 16%;
+        margin-top: -8%;
+    }
+    .firma_image
+    {
+        width: 40%;
+        margin-top: -12%;
+        margin-left: 12%;
+    }
+}
+@media(max-width:400px)
+{
+    .sheet{
+        width: 100%;
+    }
+    .button_firma
+    {
+        width: 60%;
+        margin-left: 8%;
+        margin-top: -12%;
+    }
+    .firma_image
+    {
+        width: 50%;
+        margin-top: -16%;
+    }
+}
