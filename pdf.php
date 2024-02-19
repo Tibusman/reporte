@@ -41,7 +41,13 @@ if(isset($_GET['formato']))
         $archivo = $archivos->FIND($id);
         PrintPDF(BuildStructure($archivo[0], "regreso"), "nombre.pdf");
     }
-    else if($formtatype === "accesorio")
+    else if($formtatype === "accesorio_in")
+    {
+        $archivos = new archivos;
+        $archivo = $archivos->FIND($id);
+        PrintPDF(BuildFormat2($archivo[0]), "nombre.pdf");
+    }
+    else if($formtatype === "accesorio_out")
     {
         $archivos = new archivos;
         $archivo = $archivos->FIND($id);
@@ -248,7 +254,9 @@ function BuildStructure($archivo, $tipo)
 
 function BuildFormat2($archivo)
 {
-    $html = "
+    if($archivo === "accesorio_in")
+    {
+        $html = "
         <table style='width:100%;'>
             <tr>
                 <td style='color:rgb(0,92,192); font-weight:bold; font-size:30px; text-align:center; width:30%;'>BUSMAN</td>
@@ -261,6 +269,27 @@ function BuildFormat2($archivo)
                 </td>
             </tr>
         </table>
+    ";
+    }
+    else
+    {
+        $html = "
+        <table style='width:100%;'>
+            <tr>
+                <td style='color:rgb(0,92,192); font-weight:bold; font-size:30px; text-align:center; width:30%;'>BUSMAN</td>
+                <td style='color:black; font-weight:bold; font-size:16px; text-align:center; width:40%'>
+                    FORMATO DE REGRESO DE  ACCESORIOS DE COMPUTO
+                </td>
+                <td style=' font-size:12px; width:30%; text-align:center'>
+                    Código: <b>0001</b><br>
+                    Version: <b>1.0</b>
+                </td>
+            </tr>
+        </table>
+    ";
+    }
+    $html .= "
+        
         <br>
         <table style='width:100%;'>
             <tr>
@@ -305,18 +334,42 @@ function BuildFormat2($archivo)
             </tr>
         </table>
         <br><br><br><br><br><br><br><br>
-        <table style='width:80%; margin:auto;'>
-            <tr>
-                <td style='width:50%'>
-                    <p style='text-align:center;'>__________________________________</p>
-                    <p style='text-align:center;'>Firma de quien entrega</p>
-                </td>
-                <td style='width:50%'>
-                    <p style='text-align:center;'>__________________________________</p>
-                    <p style='text-align:center;'>Firma de quien recibe</p>
-                </td>
-            </tr>
-        </table>
+        ";
+        if($archivo === "accesorio_in")
+        {
+            $html .= "
+                <table style='width:80%; margin:auto;'>
+                    <tr>
+                        <td style='width:50%'>
+                            <p style='text-align:center;'>__________________________________</p>
+                            <p style='text-align:center;'>Firma de quien entrega</p>
+                        </td>
+                        <td style='width:50%'>
+                            <p style='text-align:center;'>__________________________________</p>
+                            <p style='text-align:center;'>Firma de quien recibe</p>
+                        </td>
+                    </tr>
+                </table>";
+        }
+        else
+        {
+            $html .= "
+                <table style='width:80%; margin:auto;'>
+                    <tr>
+                        <td style='width:50%'>
+                            
+                            <p style='text-align:center;'>__________________________________</p>
+                            <p style='text-align:center;'>Firma de quien entrega</p>
+                        </td>
+                        <td style='width:50%'>
+                            <img :src= '`https://internos.busman.com.mx/reportes/App/Resources/Firmas/firma_Alan.png`'   alt='' class='firma_image' v-else>
+                            <p style='text-align:center;'>__________________________________</p>
+                            <p style='text-align:center;'>Firma de quien recibe</p>
+                        </td>
+                    </tr>
+                </table>";
+        }
+        $html .="
         <br><br><br><br><br><br>
         <br><br><br><br><br><br>
         <br><br><br><br><br><br>

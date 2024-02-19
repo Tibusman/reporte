@@ -4,7 +4,7 @@ const app = Vue.createApp({
             modal:false,
             signaturePad:"",
             id:"",documento:[],
-            rect:"",
+            rect:"",firma:""
         }
     },
     methods: {
@@ -62,6 +62,8 @@ const app = Vue.createApp({
                 const res = await axios.get("../getfile/" + id);
                 console.log(res.data)
                 this.documento = res.data[0];
+                this.firma = this.documento.firma;
+                this.SuccesAlert(this.documento[0].Firma);
             }
             catch(err)
             {
@@ -93,6 +95,11 @@ const app = Vue.createApp({
                 this.canvas.width = ancho;
                 console.log(ancho);
             }
+        },
+
+        OpenPrint()
+        {
+            window.print();
         },
 
         ErrorAlert(mensaje)

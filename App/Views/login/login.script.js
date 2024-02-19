@@ -4,7 +4,7 @@ const app = Vue.createApp({
             mail: "",
             password: "",
             token:"",
-            url:"https://internos.busman.com.mx/requisicion/login",
+            url:"http://localhost:3000/requisicion/login",
         }
     },
     methods: {

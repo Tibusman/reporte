@@ -4,9 +4,10 @@
         <?php 
             CSRF();
             Firma_Block::Modal();
+            Firma_Block::Print();
             
         ?>
-        <div v-if="documento.tipo_doc === 'accesorio'">
+        <div v-if="documento.tipo_doc === 'accesorio_in' || documento.tipo_doc ==='accesorio_out'">
             <?php
                 Firma_Block::VistaPrevia2();
             ?>

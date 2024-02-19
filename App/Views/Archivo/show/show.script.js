@@ -66,7 +66,7 @@ const app = Vue.createApp({
         },
 
         OpenOpciones(id, tipo, index, firma) {
-            this.firma = 
+            this.firma = firma;
             this.indice = index;
             this.tipo_document = tipo;
             this.id = id;
@@ -269,7 +269,7 @@ const app = Vue.createApp({
             form.append("Master", "No");
             form.append("Tulip", "No");
             form.append("Firma", "");
-            form.append("tipo_doc", "accesorio");
+            form.append("tipo_doc", this.tipo_formato);
             form.append("token", this.token);
             form.append("method", "POST");
             try {

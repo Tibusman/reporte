@@ -44,7 +44,7 @@ class Archivo_Controller extends Views
         $mail = $this->archivo->extractsend("correo");
         Mail::SendMail("Firmar", 
             "Firma de documento", "Por favor firma el documento de $type digitalmente, da clic al botón de abajo y te redireccionara a visualizar y firmar tu documento",
-            "https://localhost/reportes/document.php?doctype_Xs4588ss_id_file=$id", $mail);
+            "http://localhost/reportes/Archivo/firma/$id", $mail);
         echo "true";
     }
 

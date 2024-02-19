@@ -134,7 +134,7 @@ class Firma_Block{
                     </tr>
                 </table><br><br><br><br><br>
                 <div class=" cont-80 d-flex mr-auto">
-                    <div class="content">
+                    <div class="content" v-if="documento.tipo_doc === 'entrega' || documento.tipo_doc === 'salida'">
                         <div class="rw">
                             <div class="sup-2-s">
                                 <img :src= "`https://internos.busman.com.mx/reportes/App/Resources/Firmas/firma_Alan.png`"   alt="" class="firma_image" v-else>
@@ -147,6 +147,22 @@ class Firma_Block{
                                 <p style='text-align:center;'>__________________________________</p>
                                 <p style='text-align:center;'>Firma de quien recibe</p>
                             </div>
+                        </div>
+                    </div>
+                    <div class="content" v-else>
+                        <div class="rw">
+                            <div class=" sup-2-s  mr-auto">
+                                <div class="button_firma text-center c-white" @click="OpenModal" v-if="documento.Firma === null || documento.Firma === ''"><br>Agregar Firma</div>
+                                <img :src= "`https://internos.busman.com.mx/reportes/${documento.Firma}`"   alt="" class="firma_image" v-else>
+                                <p style='text-align:center;'>__________________________________</p>
+                                <p style='text-align:center;'>Firma de quien entrega</p>
+                            </div><br><br><br><br>
+                            <div class="sup-2-s">
+                                <img :src= "`https://internos.busman.com.mx/reportes/App/Resources/Firmas/firma_Alan.png`"   alt="" class="firma_image" v-else>
+                                <p style='text-align:center;'>__________________________________</p>
+                                <p style='text-align:center;'>Firma de quien recibe</p>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -184,8 +200,11 @@ class Firma_Block{
                 <table style='width:100%;'>
                     <tr>
                         <td style='color:rgb(0,92,192); font-weight:bold; font-size:30px; text-align:center; width:30%;'>BUSMAN</td>
-                        <td style='color:black; font-weight:bold; font-size:16px; text-align:center; width:40%'>
+                        <td style='color:black; font-weight:bold; font-size:16px; text-align:center; width:40%' v-if="documento.tipo_doc === 'accesorio_in'">
                             FORMATO DE ENTREGA DE  ACCESORIOS DE COMPUTO
+                        </td>
+                        <td style='color:black; font-weight:bold; font-size:16px; text-align:center; width:40%' v-else>
+                            FORMATO DE REGRESO DE  ACCESORIOS DE COMPUTO
                         </td>
                         <td style=' font-size:12px; width:30%; text-align:center'>
                             Código: <b>0001</b><br>
@@ -237,7 +256,7 @@ class Firma_Block{
                     </tr>
                 </table><br><br><br><br><br>
                 <div class=" cont-80 d-flex mr-auto">
-                    <div class="content">
+                    <div class="content" v-if="documento.tipo_doc === 'accesorio_in'">
                         <div class="rw">
                             <div class="sup-2-s">
                                 <img :src= "`https://internos.busman.com.mx/reportes/App/Resources/Firmas/firma_Alan.png`"   alt="" class="firma_image" v-else>
@@ -252,11 +271,26 @@ class Firma_Block{
                             </div>
                         </div>
                     </div>
+                    <div class="content" v-else>
+                        <div class="rw">
+                            <div class="sup-2-s">
+                            <div class="button_firma text-center c-white" @click="OpenModal" v-if="documento.Firma === null || documento.Firma === ''"><br>Agregar Firma</div>
+                                <img :src= "`https://internos.busman.com.mx/reportes/${documento.Firma}`"   alt="" class="firma_image" v-else>
+                                <p style='text-align:center;'>__________________________________</p>
+                                <p style='text-align:center;'>Firma de quien entrega</p>
+                            </div><br><br><br><br>
+                            <div class=" sup-2-s  mr-auto">
+                                <img :src= "`https://internos.busman.com.mx/reportes/App/Resources/Firmas/firma_Alan.png`"   alt="" class="firma_image" v-else>
+                                <p style='text-align:center;'>__________________________________</p>
+                                <p style='text-align:center;'>Firma de quien recibe</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br><br><br><br><br><br>
                 <table style='width:100%;'>
                     <tr>
-                        <td style='width:96.5%; background:white; text-align:justify; font-size:10px;'>
+                        <td style='width:96.5%; background:white; text-align:justify; font-size:10px;' v-if="documento.tipo_doc === 'accesorio_in'">
                         Al firmar el documento me comprometo a ser responsable por el equipo que se me sera asignado, si se daña  pierde tomare esa responsabilidad
                         y pagare el equipo, evaluando a las condiciones en las que se me entrego.
                         <br><br>
@@ -288,12 +322,25 @@ class Firma_Block{
                     <canvas id="signatureCanvas" width="800" height="400" class="canvas_firma"></canvas>
                 </div>
                 <div class="footer-options">
+                    <div class="cont-10 d-flex-f float-end">
+                        <button class="btn_blue c-white" @click="LimpiarFirma()" title="Limpiar firma"><i class="fa-solid fa-broom"></i></button>
+                    </div>
                     <div class="cont-10 d-flex-f">
                         <button class="btn_blue" @click="ChangeColor('blue')"></button>
                         <button class="btn_black" @click="ChangeColor('black')"></button>
                     </div>
+                    
                 </div>
             </div>
+        <?php
+    }
+
+    public static function Print()
+    {
+        ?>
+        <div class="button_print hov-1" title="Imprimir documento" @click="OpenPrint">
+            <i class="fa-solid fa-print"></i>
+        </div>
         <?php
     }
 }

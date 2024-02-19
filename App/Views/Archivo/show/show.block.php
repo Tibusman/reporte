@@ -35,7 +35,7 @@ class Archivo_Block
                     <div class="cont-20 mr-auto">{{item.Puesto}}</div>
                     <div class="cont-20 mr-auto">{{item.Fecha}}</div>
                     <div class="cont-15 mr-auto">{{item.tipo_doc}}</div>
-                    <div class="cont-5 mr-auto"><img src="<?php Icon('option.png'); ?>" class="hov-1 cursor-pointer" @click="OpenOpciones(item.id, item.tipo_doc, index, item.firma)"></div>
+                    <div class="cont-5 mr-auto"><img src="<?php Icon('option.png'); ?>" class="hov-1 cursor-pointer" @click="OpenOpciones(item.id, item.tipo_doc, index, item.Firma)"></div>
                 </div>
             </div>
         <?php
@@ -269,7 +269,7 @@ class Archivo_Block
                     <div class="cont-95 mr-t-2 mr-auto bg-gray-100 border-rad-1 cursor-pointer hov-1 pad-2" @click="OpenDocument">
                         <p class="text-12 text-center" >Imprimir</p>
                     </div>
-                    <div class="cont-95 mr-t-2 mr-auto bg-gray-100 border-rad-1 cursor-pointer hov-1 pad-2" @click="SendFirma" v-if="firma !== ''">
+                    <div class="cont-95 mr-t-2 mr-auto bg-gray-100 border-rad-1 cursor-pointer hov-1 pad-2" @click="SendFirma" v-if="firma === '' || firma === null">
                         <p class="text-12 text-center" >Petición de Firma</p>
                     </div>
                     <br>
@@ -286,7 +286,7 @@ class Archivo_Block
                     <p class="float-end text-14 hov-1 cursor-pointer mr-r-4 mr-t-2" title="Cerrar" @click="modaluser = false">X</p>
                     <div class="cont-95 mr-auto">
                         <p class="text-14 pad-2">Seleccionar usuario</p><br>
-                        <div class="cont-100 h-45 scroll-y mr-t-2" >
+                        <div class="cont-100 h-40 scroll-y mr-t-2 border-1-black" >
                             <div class="cont-100 d-flex-f pad-2 shad-1-black" v-for="(item, index) of users">
                                 <div class="cont-15 mr-auto">
                                     <p class="text-12 text-center">{{item.Nombre}}</p>
@@ -417,7 +417,17 @@ class Archivo_Block
                                     <option value="Cargador">Cargador</option>
                                 </select>
                             </div>
-                        </div><br><br>
+                        </div>
+                        <div class="cont-100 d-flex-f mr-t-6">
+                            <div class="cont-95 mr-auto">
+                            <p class="text-10 c-blue">Tipo de formato</p>
+                                <select class="input-form-1" v-model="tipo_formato">
+                                    <option value="accesorio_in">Entrega de accesorio</option>
+                                    <option value="accesorio_out">Regreso de accesorio</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br><br>
                         <br><br>
                         <button class="button bg-blue c-white d-block mr-auto cont-50 border-rad-1" @click="SaveDocument2" v-if="edit === false">Generar</button>
                         <button class="button bg-blue c-white d-block mr-auto cont-50 border-rad-1" @click="EditarDocumento2" v-else>Editar</button>
