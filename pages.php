@@ -73,7 +73,15 @@ $blocks=array(
         "getfile",
         "firmar",
     ],
-    
+    "App"=>[
+        "show",
+        "create",
+        "edit",
+        "store",
+        "getall",
+        "delete",
+        "update"
+    ]
 );
 //Se pueden registrar varios bloques y varias paginas
 ?>

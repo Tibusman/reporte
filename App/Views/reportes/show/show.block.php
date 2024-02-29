@@ -178,6 +178,23 @@ class ReporteBlock
             </div>
         <?php
     }
+
+    public static function LoadResource()
+    {
+        ?>
+            <div class="load_view" id="loadingview">
+                <div class="show-spinner" v-if="showload">
+                    <div class="loadingio-spinner-ripple-v3oo5m0dq9k">
+                        <div class="ldio-rmrl4u541f">
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+                    <p  style="margin-left: 53%;">Cargando Vista</p>
+                </div>
+            </div>
+        <?php
+    }
 }
 
 ?>

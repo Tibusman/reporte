@@ -99,9 +99,18 @@
                                 </div>
                             </a>
                         </div>
+                        <div id="apps" onclick="LoadSubMenu('apps')">
+                            <a class="text-d">
+                                <div class="item-menu">
+                                    <i class="fa-solid fa-tablet-screen-button"></i>
+                                    <p class="pos">Aplicaciones</p>
+                                </div>
+                            </a>
+                        </div>
                         <?php
                     })
                 ?>
+
                 <div id="equipo" onclick="window.location='https://internos.busman.com.mx/requisicion'">
                     <a class="text-d">
                         <div class="item-menu">
@@ -176,6 +185,15 @@
                 <?php
                     Bloque("Inventario/show", "Ver Inventario");
                     Bloque("Archivo/show", "Ver documentos");
+                ?>
+            </div>
+
+            <div class="fill">
+                <p class="title-submenu">
+                    APLICACIONES
+                </p><br><br>
+                <?php
+                    Bloque("App/show", "Administrar");
                 ?>
             </div>
         </div>

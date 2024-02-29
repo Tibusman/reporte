@@ -1,6 +1,7 @@
 <body>
 <?php
         Layout("Menu");
+        MenuBlock::LoadResource();
         CSRF();
     ?>
     <div id="app">

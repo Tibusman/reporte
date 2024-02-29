@@ -1,6 +1,7 @@
 <body>
 <?php
         Layout("Menu");
+        Inventario_Block::LoadResource();
         CSRF();
     ?>
     <div id="app">

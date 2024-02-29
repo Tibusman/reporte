@@ -1,16 +1,12 @@
 <body>
 <?php
         Layout("Menu");
-        Archivo_Block::LoadResource();
+        App_Block::LoadResource();
         CSRF();
     ?>
     <div id="app">
         <?php 
-            Archivo_Block::Formulario();
-            Archivo_Block::formato2();
-            Archivo_Block::Opciones();
-            Archivo_Block::User();
-            Archivo_Block::Choice();
+            
         ?>
         <div class="loadalert" v-show="alert==true">
             <img src="<?php Icon("load.gif")?>" alt="">
@@ -19,14 +15,14 @@
         <div class="wrap mr-t-6">
             <div class="cont-90 mr-auto">
             <?php 
-                Archivo_Block::Bloque1();
-                Archivo_Block::Tabla();
+                App_Block::OptionsApps();
+                App_Block::LoadApps();
             ?>
             </div>
         </div>
     </div>
     <script>
-        var module = "inventario";
+        var module = "apps";
     </script>
     <?php scripts();?>
 </body>

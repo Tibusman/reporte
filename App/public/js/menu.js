@@ -7,11 +7,14 @@ var mantenimiento = document.getElementById("mantenimiento");
 var respaldo = document.getElementById("respaldo");
 var usuario = document.getElementById("usuario");
 var equipo = document.getElementById("equipo");
+var apps = document.getElementById("apps");
 var inventario = document.getElementById("inventario");
 var fill = document.getElementsByClassName("fill");
 var modal = document.getElementsByClassName("modal");
+var loadingview = document.getElementById('loadingview');
 
 window.addEventListener("load", ()=>{
+    loadingview.style.display = "none";
     if(document.getElementsByClassName("modal") !== null)
     {
         for(let i=0; i<modal.length; i++)
@@ -66,6 +69,10 @@ function isactive()
     {
         inventario.classList.add("active");
     }
+    if(module === "apps")
+    {
+        apps.classList.add("active");
+    }
 
 }
 
@@ -90,6 +97,7 @@ function LoadSubMenu(area)
     fill[3].style.display="none";
     fill[4].style.display="none";
     fill[5].style.display="none";
+    fill[6].style.display="none";
     if(area === "reporte")
     {
         fill[0].style.display="block";
@@ -113,6 +121,10 @@ function LoadSubMenu(area)
     if(area === "inventario")
     {
         fill[5].style.display="block";
+    }
+    if(area === "apps")
+    {
+        fill[6].style.display="block";
     }
 }
 

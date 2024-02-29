@@ -1,0 +1,20 @@
+.input-form{
+    width: 95%;
+    border: 1px solid silver;
+    border-radius: 2px;
+    padding: 10px;
+    outline: none;
+}
+.select-image{
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: auto;
+}
+.select-image2{
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+}

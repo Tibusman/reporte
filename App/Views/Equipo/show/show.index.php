@@ -1,6 +1,7 @@
 <body>
 <?php
         Layout("Menu");
+        Equipo_Block::LoadResource();
         CSRF();
     ?>
     <div id="app">

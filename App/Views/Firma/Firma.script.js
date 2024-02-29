@@ -62,11 +62,11 @@ const app = Vue.createApp({
                 const res = await axios.get("../getfile/" + id);
                 console.log(res.data)
                 this.documento = res.data[0];
-                this.firma = this.documento.firma;
-                this.SuccesAlert(this.documento[0].Firma);
+                this.firma = this.documento.Firma;
             }
             catch(err)
             {
+                console.log(err);
                 this.ErrorAlert(err);
             }
         },

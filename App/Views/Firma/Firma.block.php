@@ -1,6 +1,7 @@
 <?php
 
-class Firma_Block{
+class Firma_Block
+{
     public static function VistaPrevia1()
     {
         ?>
